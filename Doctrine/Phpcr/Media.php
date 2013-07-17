@@ -38,6 +38,26 @@ class Media extends BaseMedia
     }
 
     /**
+     * Get full file path: /path/to/file/filename.ext
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        // TODO: Implement getPath() method.
+    }
+
+    /**
+     * The mime type of this media element
+     *
+     * @return string
+     */
+    public function getContentType()
+    {
+        // TODO: Implement getContentType() method.
+    }
+
+    /**
      * Getter for createdBy
      * The createdBy is assigned by the content repository
      * This is the name of the (jcr) user that created the node

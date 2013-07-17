@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="cmf_media.form.image_class">Symfony\Cmf\Bundle\MediaBundle\Form\Type\ImageType</parameter>
         <parameter key="cmf_media.subscriber.imagine_cache_class">Symfony\Cmf\Bundle\MediaBundle\EventListener\ImagineCacheInvalidatorSubscriber</parameter>
+        <parameter key="cmf_media.adapter.elfinder.phpcr_driver.class">Symfony\Cmf\Bundle\MediaBundle\Adapter\ElFinder\PHPCRDriver</parameter>
     </parameters>
 
     <services>
@@ -21,6 +22,11 @@
             <argument type="service" id="liip_imagine.cache.manager"/>
             <argument type="service" id="service_container"/>
             <argument>%cmf_media.imagine.all_filters%</argument>
+        </service>
+
+        <service id="cmf_media.adapter.elfinder.phpcr_driver" class="%cmf_media.adapter.elfinder.phpcr_driver.class%">
+            <argument type="service" id="doctrine_phpcr.odm.default_document_manager" />
+            <argument type="service" id="doctrine_phpcr.default_session" />
         </service>
     </services>
 </container>

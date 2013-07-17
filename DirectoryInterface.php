@@ -19,28 +19,12 @@ namespace Symfony\Cmf\Bundle\MediaBundle;
  * This is to be kept compatible with the Gaufrette adapter to be able to use a
  * filesystem with directories.
  */
-interface DirectoryInterface extends FileInterface
+interface DirectoryInterface extends HierarchyInterface
 {
     /**
-     * Get the parent directory.
+     * Returns the contents of this directory.
      *
-     * @return DirectoryInterface|null
+     * @return HierarchyInterface[]
      */
-    public function getParentDirectory();
-
-    /**
-     * Set the parent directory.
-     *
-     * @param DirectoryInterface $parent
-     *
-     * @return boolean
-     */
-    public function setParentDirectory(DirectoryInterface $parent);
-
-    /**
-     * Get full file path: /path/to/file/filename.ext
-     *
-     * @return string
-     */
-    public function getPath();
+    public function getChildren();
 }
