@@ -18,7 +18,8 @@
     },
     "suggest": {
         "knplabs/gaufrette": "When using the Gaufrette adapter",
-        "phpcr/phpcr-utils": "When using the Gaufrette adapter"
+        "phpcr/phpcr-utils": "When using the Gaufrette adapter",
+        "helios-ag/fm-elfinder-bundle": "When using the ElFinder adapter"
     },
     "autoload":{
         "psr-0":{

@@ -31,7 +31,7 @@ interface HierarchyInterface extends MediaInterface
     /**
      * Get the parent node.
      *
-     * @return DirectoryInterface|null
+     * @return HierarchyInterface|null
      */
     public function getParent();
 
@@ -43,20 +43,6 @@ interface HierarchyInterface extends MediaInterface
      * @return boolean
      */
     public function setParent(HierarchyInterface $parent);
-
-    /**
-     * Check if the directory is readable
-     *
-     * @return bool
-     */
-    public function isReadable();
-
-    /**
-     * Check if the directory is writable
-     *
-     * @return bool
-     */
-    public function isWritable();
 
     /**
      * Get the file size in bytes

@@ -7,11 +7,6 @@ use Symfony\Cmf\Bundle\MediaBundle\Model\Media as BaseMedia;
 class Media extends BaseMedia
 {
     /**
-     * @var object
-     */
-    protected $parent;
-
-    /**
      * @var string
      */
     protected $createdBy;
@@ -20,42 +15,6 @@ class Media extends BaseMedia
      * @var string
      */
     protected $updatedBy;
-
-    /**
-     * @param object $parent
-     */
-    public function setParent($parent)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * @return object|null
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * Get full file path: /path/to/file/filename.ext
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        // TODO: Implement getPath() method.
-    }
-
-    /**
-     * The mime type of this media element
-     *
-     * @return string
-     */
-    public function getContentType()
-    {
-        // TODO: Implement getContentType() method.
-    }
 
     /**
      * Getter for createdBy

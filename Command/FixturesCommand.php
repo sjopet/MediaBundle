@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\File;
+use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Directory;
 
 /**
  * @author Sjoerd Peters <sjoerd.peters@gmail.com>
@@ -47,7 +47,7 @@ class FixturesCommand extends ContainerAwareCommand
             }
 //        }
 
-        $file = new File();
+        $file = new Directory();
         $file->setId($mediaRoot);
         $this->dm->persist($file);
         $this->dm->flush($file);
