@@ -31,18 +31,18 @@ interface HierarchyInterface extends MediaInterface
     /**
      * Get the parent node.
      *
-     * @return HierarchyInterface|null
+     * @return Object|null
      */
     public function getParent();
 
     /**
      * Set the parent node.
      *
-     * @param HierarchyInterface $parent
+     * @param Object $parent
      *
      * @return boolean
      */
-    public function setParent(HierarchyInterface $parent);
+    public function setParent($parent);
 
     /**
      * Get the file size in bytes

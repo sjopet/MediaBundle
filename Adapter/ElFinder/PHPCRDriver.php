@@ -5,7 +5,9 @@ namespace Symfony\Cmf\Bundle\MediaBundle\Adapter\ElFinder;
 use FM\ElFinderPHP\Driver\ElFinderVolumeDriver;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use PHPCR\SessionInterface;
+use Symfony\Cmf\Bundle\MediaBundle\DirectoryInterface;
 use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\File;
+use Symfony\Cmf\Bundle\MediaBundle\HierarchyInterface;
 use Symfony\Cmf\Bundle\MediaBundle\MediaInterface;
 
 /**
@@ -200,14 +202,17 @@ class PHPCRDriver extends ElFinderVolumeDriver
         /** @var File $doc */
         $doc = $this->dm->find(null, $path);
 
-        if(!$doc || !$doc instanceof File){
+        if(!$doc || !$doc instanceof HierarchyInterface){
             return false;
         }
 
+        $dir = $doc instanceof DirectoryInterface;
+        $ts = $doc->getUpdatedAt() ? $doc->getUpdatedAt()->getTimestamp() : $doc->getCreatedAt()->getTimestamp();
+
         $stat = array(
             'size' => $doc->getSize(),
-            'ts' => $doc->getUpdatedAt()->getTimestamp(),
-            'mime' => $doc->getContentType(),
+            'ts' => $ts,
+            'mime' => $dir ? 'directory' : $doc->getContentType(),
             'read' => true,
             'write' => true,
             'locked' => false,
@@ -226,8 +231,8 @@ class PHPCRDriver extends ElFinderVolumeDriver
     protected function _subdirs($path)
     {
         $doc = $this->dm->find(null, $path);
-        if($doc && $subs = $this->dm->getChildren($doc)){
-            return count($subs);
+        if($doc instanceof DirectoryInterface){
+            return count($doc->getChildren()) > 0;
         }
         return false;
     }
@@ -256,7 +261,7 @@ class PHPCRDriver extends ElFinderVolumeDriver
     protected function _scandir($path)
     {
         $doc = $this->dm->find(null, $path);
-        return $this->dm->getChildren($doc) ?: array();
+        return $doc->getChildren();
     }
 
     /**

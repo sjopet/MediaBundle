@@ -28,7 +28,7 @@ class FixturesCommand extends ContainerAwareCommand
     {
         $this
             ->setName('cmf:media:generate')
-            ->addOption('force', null, InputOption::VALUE_NONE, 'If set, the commmand will overwrite any existing nodes')
+            ->addOption('force', null, InputOption::VALUE_NONE, 'If set, the commmand will overwrite any existing data')
             ->setDescription('This command will generate some test data');
     }
 
@@ -47,10 +47,10 @@ class FixturesCommand extends ContainerAwareCommand
             }
 //        }
 
-        $file = new Directory();
-        $file->setId($mediaRoot);
-        $this->dm->persist($file);
-        $this->dm->flush($file);
+        $dir = new Directory();
+        $dir->setId($mediaRoot);
+        $this->dm->persist($dir);
+        $this->dm->flush($dir);
 
         $output->writeln(sprintf('Created directory with path %s', $mediaRoot));
     }

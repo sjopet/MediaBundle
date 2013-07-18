@@ -4,12 +4,12 @@ namespace Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr;
 
 use Symfony\Cmf\Bundle\MediaBundle\DirectoryInterface;
 use Symfony\Cmf\Bundle\MediaBundle\HierarchyInterface;
-use Symfony\Cmf\Bundle\MediaBundle\Model\BaseMedia;
+use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\BaseMedia;
 
 class Directory extends BaseMedia implements DirectoryInterface
 {
     /**
-     * @var HierarchyInterface $parent
+     * @var Object $parent
      */
     protected $parent;
 
@@ -26,7 +26,7 @@ class Directory extends BaseMedia implements DirectoryInterface
     /**
      * Get the parent node.
      *
-     * @return HierarchyInterface|null
+     * @return Object|null
      */
     public function getParent()
     {
@@ -36,11 +36,11 @@ class Directory extends BaseMedia implements DirectoryInterface
     /**
      * Set the parent node.
      *
-     * @param HierarchyInterface $parent
+     * @param Object $parent
      *
      * @return boolean
      */
-    public function setParent(HierarchyInterface $parent)
+    public function setParent($parent)
     {
         $this->parent = $parent;
     }
