@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="cmf_media.form.image_class">Symfony\Cmf\Bundle\MediaBundle\Form\Type\ImageType</parameter>
         <parameter key="cmf_media.twig.extension.class">Symfony\Cmf\Bundle\MediaBundle\Twig\Extension\MediaExtension</parameter>
+        <parameter key="cmf_media.adapter.elfinder.phpcr_driver.class">Symfony\Cmf\Bundle\MediaBundle\Adapter\ElFinder\PHPCRDriver</parameter>
     </parameters>
 
     <services>
@@ -19,6 +20,11 @@
         <service id="cmf_media.twig.extension" class="%cmf_media.twig.extension.class%" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="cmf_media.templating.helper"/>
+        </service>
+
+        <service id="cmf_media.adapter.elfinder.phpcr_driver" class="%cmf_media.adapter.elfinder.phpcr_driver.class%">
+            <argument type="service" id="doctrine_phpcr.odm.default_document_manager" />
+            <argument type="service" id="doctrine_phpcr.default_session" />
         </service>
     </services>
 </container>

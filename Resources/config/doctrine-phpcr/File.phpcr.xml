@@ -15,11 +15,12 @@
                 <cascade-all/>
             </cascade>
         </child>
+        <!--<field name="content" type="binary" property="jcr:content"/>-->
 
-        <field name="contentType" type="string"/>
         <field name="extension" type="string"/>
 
-        <field name="size" type="int"/>
+        <!--<field name="contentType" type="string"/>-->
+        <!--<field name="size" type="int"/>-->
 
     </document>
 
